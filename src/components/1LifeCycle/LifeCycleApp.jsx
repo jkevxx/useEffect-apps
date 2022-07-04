@@ -1,3 +1,8 @@
+/**
+ * IT'S NOT RECOMMENDED TO USE HEAVY PROCESSES OUTSIDE THE COMPONENT
+ * console.log('pre-render')
+ */
+
 import React, { useState, useEffect } from "react";
 
 function LifeCycle() {
@@ -6,22 +11,42 @@ function LifeCycle() {
 
   useEffect(() => {
     console.log("useEffect []");
+
+    return () => {
+      console.log("cleanup useEffect []");
+    };
   }, []);
 
   useEffect(() => {
     console.log("useEffect no dependency");
+
+    return () => {
+      console.log("cleanup no dependency []");
+    };
   });
 
   useEffect(() => {
     console.log("useEffect [counter1]");
+
+    return () => {
+      console.log("cleanup [counter1]");
+    };
   }, [counter1]);
 
   useEffect(() => {
     console.log("useEffect [counter2]");
+
+    return () => {
+      console.log("cleanup [counter2]");
+    };
   }, [counter2]);
 
   useEffect(() => {
     console.log("useEffect [counter1, counter2]");
+
+    return () => {
+      console.log("cleanup [counter1, counter2]");
+    };
   }, [counter1, counter2]);
 
   return (
